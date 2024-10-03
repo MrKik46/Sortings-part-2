@@ -1,10 +1,7 @@
 template <typename number> int binary_place_search(number* array, int end, number value) {
 	int start = 0;
-	int place_to_paste = end - 1;
 
-	bool flag = true;
-
-	while (flag)
+	while (true)
 	{
 		number element = array[(start + end) / 2];
 
@@ -16,24 +13,18 @@ template <typename number> int binary_place_search(number* array, int end, numbe
 		}
 
 		if (element == value) {
-			place_to_paste = (start + end) / 2 + 1;
-			flag = false;
+			return ((start + end) / 2);
 		}
 
 		if (end - start <= 1) {
 			if (array[start] > value) {
-				place_to_paste = start;
+				return start;
 			}
 			else {
-				place_to_paste = end;
+				return end;
 			}
-
-			flag = false;
 		}
 	}
-
-	return place_to_paste;
-
 }
 
 template<typename number> int binary_insertion_sort(number* array, int array_size) {
